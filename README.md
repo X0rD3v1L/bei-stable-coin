@@ -1,66 +1,31 @@
-## Foundry
+# BEI Stable Coin
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
-
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
+This is a rewrite of the Maker stablecoin DEI, drawing from insights on smart contract development from the [YouTube playlist](https://www.youtube.com/playlist?list=PLO5VPQH6OWdW9b6GKJR4Dt9XZxQlJuVp_).
 
 ```shell
-$ forge build
+forge build
+forge test
 ```
 
-### Test
 
-```shell
-$ forge test
+### Links
+
+- [docs](https://docs.makerdao.com/)
+- [dss](https://github.com/makerdao/dss)
+- [dss-proxy](https://github.com/makerdao/dss-proxy)
+- [dss-proxy-actions](https://github.com/makerdao/dss-proxy-actions)
+- [dss-cdp-manager](https://github.com/makerdao/dss-cdp-manager)
+- [osm](https://github.com/makerdao/osm)
+
+
 ```
+par [ray] 1000000000000000000000000000
+mat [ray] 1450000000000000000000000000
+val [wad] 2067300000000000000000
+spot [ray] 1429862068965517241379310344827
 
-### Format
+liquidation ratio = mat / par
+                  = collateral USD value / debt USD value
 
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+liquidation price = spot = val * 1e9 * par / mat
 ```
